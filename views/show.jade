@@ -1,0 +1,40 @@
+extends layout
+
+block content
+ br
+ br
+ br
+ .ml-3.mr-3
+  .post
+    h1=post.title
+    p 
+     Posted in  #{post.category} by #{post.author}  
+     |on #{moment(post.date).format("MM-DD-YYYY")}
+    !=post.body
+    hr
+  h2 Add Comment    
+  if (post.comments)
+    h3 Comments
+      each comment, i in post.comments
+       .comment
+         p.comment-name #{comment.name}
+         p.comment-body #{comment.body}
+      br 
+  form.comment-form(method='post', action='/users/addcomment')
+     input(name='postid', type='hidden', value='#{post._id}')
+     .form-group
+      label Name
+      input.form-control(type='text', name='name')
+     .form-group
+      label Email
+      input.form-control(type='text', name='email')
+     .form-group
+      label Body
+      textarea.form-control(type='text', name='body')
+      br
+      input.btn.btn-primary(type='submit', name='submit',value='Add Comment')
+      br
+      br
+      br
+      br
+

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+ br
+ br
+ br
+ .row
+  if posts
+    each post, i in posts
+       .col-md-6
+        .w3-card-4.ml-3.mr-3.mb-4
+         header.w3-container.w3-light-grey
+          h3 #{post.title}
+         .w3-container.w3-padding
+          img.w3-right(src='/#{post.mainimage}', alt='Avatar', style='width:250px;height:250px')
+          p
+           !=truncateText(post.body,400)
+          h5 By #{post.author} on #{moment(post.date).format("MM-DD-YYYY")}
+          a.btn.btn-primary(href='/users/show/#{post._id}') Read more
+          br
+ br
+ br
+ br

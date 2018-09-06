@@ -1,0 +1,55 @@
+extends layout
+
+block content
+ br
+ br
+ br
+ nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  button.navbar-toggler.mb-2(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse.ml-3    
+   ul.nav.nav-pills.mr-auto
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs') All_Blogs
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/public') Public
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/business') Business
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/Politics') Politics
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/Bollywood') Bollywood
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/hollywood') hollywood
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/Artists') Artists
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/Music') Music
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/Poetries') Poetries
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/Foodies') Foodies
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/Personal Experiences') Personal Experiences
+    li.nav-item
+      a.nav-link.mr-2.mb-2.active(href='/users/blogs/Short stories') Short stories    
+ br    
+ .row
+  if posts
+    each post, i in posts
+       .col-md-6
+        .w3-card-4.ml-3.mr-3.mb-4
+         header.w3-container.w3-light-grey
+          h3 #{post.title}
+         .w3-container.w3-padding
+          img.w3-right(src='/#{post.mainimage}', alt='Avatar', style='width:250px;height:250px')
+          p
+           !=truncateText(post.body,400)
+          h5 By 
+            b
+              |#{post.author} on #{moment(post.date).format("MM-DD-YYYY")}
+          a.btn.btn-primary(href='/users/show/#{post._id}') Read more
+          br
+ br
+ br
+ br

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+ br
+ br
+ br
+ .ml-3.mr-3
+  form(method='post', action='contact/send')
+   h2 Contact
+   .form-group
+    label Name
+    input.form-control(type='text', name='name', placeholder='Enter Name')
+   .form-group
+    label Email
+    input.form-control(type='email', name='email', placeholder='Enter Email')
+   .form-group
+    label Message
+    textarea.form-control(name='message', placeholder='Enter Message')
+   button.btn.btn-primary(type='submit') Submit

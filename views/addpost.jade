@@ -1,0 +1,28 @@
+extends layout
+
+block content
+ br
+ br
+ br
+ br
+ .ml-3.mr-3
+  form(method='post', action='/users/add',enctype='multipart/form-data')
+   .form-group
+     label Title:
+     input.form-control(name='title', type='text')
+   .form-group
+     label Category
+     input.form-control(name='category', type='text')
+   .form-group
+     label Body
+     textarea.form-control(name='body', id='body')
+   .form-group
+     label(for='exampleFormControlFile1') Main Image
+     input.form-control-file(type='file', name='mainimage')
+   input.btn.btn-primary(name='submit', type='submit', value='Save')
+ br
+ br
+ br
+ script(src='/ckeditor/ckeditor.js')
+ script
+  | CKEDITOR.replace('body');
